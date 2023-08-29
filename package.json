@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mui/x-data-grid": "^6.11.2",
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
