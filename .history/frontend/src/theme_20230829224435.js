@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material";
 import { blue, lightBlue, grey } from "@mui/material/colors";
+import store
 
 // export const theme = createTheme({
 //     palette: {
@@ -49,3 +50,15 @@ export const themeColors = (mode) => ({
     },
 });
 
+// Your custom code
+const Dark = {
+    background: {
+      default: "#1e1e1e",
+    },
+    text: {
+      primary: "#fff",
+      secondary: grey[500],
+    },
+  };
+  
+  export default themeColors(store.getState().mode).merge(Dark);
