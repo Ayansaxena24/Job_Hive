@@ -1,0 +1,98 @@
+import { Card, CardContent, Stack, Typography } from '@mui/material'
+import { Box, Container } from '@mui/system'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams, useSearchParams } from 'react-router-dom'
+import Footer from '../component/Footer'
+import LoadingBox from '../component/loadingBox'
+import Navbar from '../component/Navbar'
+import { jobLoadSingleAction } from '../Redux/actions/jobAction'
+import Button from '@mui/material/Button'
+import { userApplyJobAction } from '../Redux/actions/userAction'
+import greenSpeaker from '../images/greenSpeaker.jpg'
+import gamlaCode from '../images/gamlaCoding.jpg'
+import bg from '../images/bg.jpg'
+import './SingleJob.css'
+
+
+const SingleJob = () => {
+    const dispatch = useDispatch();
+    const { singleJob, loading }  = useSelector(state => state.singleJob)
+    const { id } = useParams();
+    const {mode} = useSelector(state => state.mode);
+    const [searchParams] = useSearchParams();
+    const creatorId = searchParams.get('creatorId');
+    
+    useEffect(() => {
+        dispatch(jobLoadSingleAction(id));
+        console.log(creatorId);
+    }, [id]);
+
+    const applyForAJob = () => {
+        dispatch(userApplyJobAction({
+            title: singleJob && singleJob.title,
+            description: singleJob && singleJob.description,
+            salary: singleJob && singleJob.salary,
+            location: singleJob && singleJob.location,
+            creatorId : creatorId
+        }))
+    }
+
+    return (
+        <div className={`flex flex-col ${mode === 'light' ? '' : 'bg-gradient-to-t from-gray-700 via-gray-900 to-black border-1'}`}>
+            <Box
+            className={`${mode === 'light' ? '' : 'bg-gradient-to-t from-gray-700 via-gray-900 to-black border-1'}`}
+            // sx={{ bgcolor: "#fafafa", height: 50 }}
+            >
+
+                <Navbar />
+                {/* <img src={greenSpeaker} alt="green speaker" className="w-[10%] absolute" /> */}
+                <Box className="absolute top-12 left-0 w-full">
+                    <Container className="flex justify-center items-center" sx={{ pt: '30px' }}>
+
+                        <Stack
+                            direction={{ xs: 'column' }}
+                            spacing={{ xs: 1, sm: 0, md: 0 }}
+                        >
+                            <Box sx={{ flex: 4, py: 2 }}>
+
+                                {
+                                    loading ? <LoadingBox /> :
+
+                                        <Card className='relative h-[500px] w-[1100px]'>
+                                            <CardContent className='bg-gradient-to-r from-[#a0467c] via-[#7327a5] to-[#a0467c] h-full flex flex-col justify-between'>
+                                                <Typography variant="h5" component="h3">
+                                                    {singleJob && singleJob.title}
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    <Box component="span" sx={{ fontWeight: 700 }}>Salary</Box>: ${singleJob && singleJob.salary}
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    <Box component="span" sx={{ fontWeight: 700 }}>Category</Box>: {singleJob && singleJob.jobTypeName ? singleJob.jobTypeName : "No category2"}
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    <Box component="span" sx={{ fontWeight: 700 }}>Location</Box>: {singleJob && singleJob.location}
+                                                </Typography>
+                                                <Typography variant="body2" sx={{ pt: 0 }}>
+                                                <Box component="span" sx={{ fontWeight: 700 }}>Job description</Box>: {singleJob && singleJob.description}
+                                                </Typography>
+                                            </CardContent>
+                                            <img src={gamlaCode} alt="gamla code" className="absolute top-0 right-0 md:w-[500px] md:h-[500px] sm:w-[220px] object-cover" />
+                                        </Card>
+                                }
+                            </Box>
+                            <Box className="flex justify-center pr-12">
+                                <Button onClick={applyForAJob} className='bg-gradient-to-r from-[#ad5389] via-[#661990] to-[#ad5389] w-[1100px] h-20' sx={{ fontSize: "15px" }} variant='contained'>Apply for this Job</Button>
+                            </Box>
+
+                        </Stack>
+
+                    </Container>
+                </Box>
+            </Box>
+            {/* <Footer className="absolute bottom-0"/> */}
+        </div>
+    )
+}
+
+export default SingleJob;

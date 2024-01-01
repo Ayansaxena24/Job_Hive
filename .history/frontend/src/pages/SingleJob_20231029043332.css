@@ -1,0 +1,8 @@
+body {
+    background-image: url('https://pngtree.com/freebackground/beautiful-technology-website-business-poster-background-template_1107136.html');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: screen; /* This ensures that the background covers the entire viewport */
+    margin: 0; /* Remove default margin to prevent unwanted spacing */
+  }
