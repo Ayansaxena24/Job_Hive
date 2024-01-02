@@ -15,6 +15,9 @@ const userRoutes = require("./routes/userRoutes");
 const jobTypeRoutes = require("./routes/jobTypeRoutes");
 const jobRoute = require("./routes/jobRoutes");
 
+// Import the 'path' module
+const path = require('path');
+
 
 //database connection
 mongoose.connect(process.env.DATABASE, {

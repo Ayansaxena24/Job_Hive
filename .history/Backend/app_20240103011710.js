@@ -15,6 +15,9 @@ const userRoutes = require("./routes/userRoutes");
 const jobTypeRoutes = require("./routes/jobTypeRoutes");
 const jobRoute = require("./routes/jobRoutes");
 
+// Import the 'path' module
+const path = require('path');
+
 
 //database connection
 mongoose.connect(process.env.DATABASE, {
@@ -28,7 +31,7 @@ mongoose.connect(process.env.DATABASE, {
 //Middleware 
 // if (process.env.NODE_ENV === 'development') { 
 app.use(morgan('dev'));
-}
+// }
 app.use(bodyParser.json({limit: "5mb"}));
 app.use(bodyParser.urlencoded({
     limit: "5mb",
