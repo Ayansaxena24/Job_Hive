@@ -58,5 +58,5 @@
     "redux-devtools-extension": "^2.13.9",
     "tailwindcss": "^3.3.3"
   },
-  "proxy": "http://localhost:9000"
+  "proxy": "https://job-hive-7dlb.vercel.app/"
 }
