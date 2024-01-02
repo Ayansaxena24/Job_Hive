@@ -7,7 +7,6 @@ require("dotenv").config();
 var cors = require("cors");
 const cookieParser = require("cookie-parser");
 const errorHandler = require("./middleware/error");
-const path = require('path');
 
 
 //import routes
@@ -15,6 +14,7 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const jobTypeRoutes = require("./routes/jobTypeRoutes");
 const jobRoute = require("./routes/jobRoutes");
+const path = require('path');
 
 
 //database connection
