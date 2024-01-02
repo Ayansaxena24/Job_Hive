@@ -172,12 +172,7 @@ const CreatorDashApplicants = () => {
               <div key={i}>
                 <select
                   value={selectedStatuses[job._id] || ""}
-                  onChange={(e) =>
-                    handleStatusChange(
-                      values.row._id,
-                      job._id,
-                      e.target.value
-                    )}
+                  onChange={(e) => setSelectedStatus(e.target.value)}
                   className="rounded-2xl px-6 py-1 mt-1 duration-300 ease-in-out bg-gray-600"
                 >
                   <option value="" disabled>
@@ -187,6 +182,14 @@ const CreatorDashApplicants = () => {
                   <option value="accepted">Accepted</option>
                   <option value="rejected">Rejected</option>
                 </select>
+                <button
+                  onClick={() =>
+                    handleStatusChange(values.row._id, values.row._id)
+                  }
+                  className="bg-gradient-to-t from-gray-700 via-gray-900 to-gray-700 rounded-2xl px-6 py-1 mt-1 duration-300 ease-in-out hover:bg-gradient-to-b hover:from-gray-900 hover:via-gray-700 hover:to-gray-900"
+                >
+                  Update Status
+                </button>
               </div>
             ))}
         </Box>
@@ -196,20 +199,14 @@ const CreatorDashApplicants = () => {
 
   const handleStatusChange = async (userId, jobHistoryId, newStatus) => {
     try {
-      if ( !userId || !jobHistoryId) {
+      if (!selectedStatus || !userId || !jobHistoryId) {
         console.error("Missing required parameters:", {
           userId,
           jobHistoryId,
-          newStatus,
+          selectedStatuses,
         });
         return;
       }
-
-        // Update the selected status for the specific job
-    setSelectedStatuses((prevStatuses) => ({
-      ...prevStatuses,
-      [jobHistoryId]: newStatus,
-    }));
 
       console.log(
         "Before Axios request - userId:",
@@ -224,14 +221,15 @@ const CreatorDashApplicants = () => {
         {
           userId,
           jobHistoryId,
-          newStatus
+          newStatus: selectedStatus,
         }
       );
 
       // Handle success or show a message
       console.log("After Axios request - response:", response.data); // Log the response
-      window.location.reload();
-      
+
+      // Clear the selected status after a successful update
+      setSelectedStatus("");
     } catch (error) {
       console.error("Error updating status:", error);
     }
@@ -279,7 +277,6 @@ const CreatorDashApplicants = () => {
               }}
               getRowId={(row) => row._id}
               rows={data}
-              rowHeight={200}
               columns={columns}
               pageSize={3}
               rowsPerPageOptions={[3]}

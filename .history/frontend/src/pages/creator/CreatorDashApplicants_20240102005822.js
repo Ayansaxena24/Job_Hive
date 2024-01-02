@@ -263,7 +263,7 @@ const CreatorDashApplicants = () => {
                 "& .MuiTablePagination-displayedRows": {
                   color: "white",
                 },
-                color: "white",
+                color: "white",,
                 [`& .${gridClasses.row}`]: {
                   bgcolor: (theme) =>
                     // theme.palette.mode === 'light' ? grey[200] : grey[900],

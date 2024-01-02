@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "*.js", "use": "@vercel/node" }
+    ],
+    {
+        "routes": [
+          {
+            "src": "/redirect",
+            "dest": "https://example.com/"
+            "status": 308,
+            "headers": { "Location": "https://example.com/" }
+          },
+        ]
+      }
+}

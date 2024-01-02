@@ -230,7 +230,7 @@ const CreatorDashApplicants = () => {
 
       // Handle success or show a message
       console.log("After Axios request - response:", response.data); // Log the response
-      window.location.reload();
+      window.lo
       
     } catch (error) {
       console.error("Error updating status:", error);
@@ -279,7 +279,6 @@ const CreatorDashApplicants = () => {
               }}
               getRowId={(row) => row._id}
               rows={data}
-              rowHeight={200}
               columns={columns}
               pageSize={3}
               rowsPerPageOptions={[3]}

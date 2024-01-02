@@ -264,7 +264,7 @@ const CreatorDashApplicants = () => {
                   color: "white",
                 },
                 color: "white",
-                [`& .${gridClasses.row}`]: {
+                [`& .${gridClasses.row}` height="64px"]: {
                   bgcolor: (theme) =>
                     // theme.palette.mode === 'light' ? grey[200] : grey[900],
                     // theme.palette.secondary.main

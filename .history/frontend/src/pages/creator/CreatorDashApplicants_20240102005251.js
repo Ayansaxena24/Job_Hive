@@ -261,7 +261,7 @@ const CreatorDashApplicants = () => {
             <DataGrid
               sx={{
                 "& .MuiTablePagination-displayedRows": {
-                  color: "white",
+                  color: "white"
                 },
                 color: "white",
                 [`& .${gridClasses.row}`]: {
@@ -279,7 +279,6 @@ const CreatorDashApplicants = () => {
               }}
               getRowId={(row) => row._id}
               rows={data}
-              rowHeight={200}
               columns={columns}
               pageSize={3}
               rowsPerPageOptions={[3]}

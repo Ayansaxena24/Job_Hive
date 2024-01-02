@@ -257,7 +257,7 @@ const CreatorDashApplicants = () => {
           className={`relative flex justify-center p-[24px] bg-gradient-to-t from-gray-700 via-gray-900 to-gray-700 border-1 w-[100%] rounded-lg'}`}
           // sx={{ bgcolor: "secondary.midNightBlue" }}
         >
-          <Box sx={{ height: 400, width: "100%" }}>
+          <Box sx={{ height: 400,, width: "100%" }}>
             <DataGrid
               sx={{
                 "& .MuiTablePagination-displayedRows": {

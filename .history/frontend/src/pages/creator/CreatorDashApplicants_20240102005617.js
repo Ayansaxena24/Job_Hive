@@ -262,6 +262,8 @@ const CreatorDashApplicants = () => {
               sx={{
                 "& .MuiTablePagination-displayedRows": {
                   color: "white",
+                  padding: "0px",
+                  mar
                 },
                 color: "white",
                 [`& .${gridClasses.row}`]: {

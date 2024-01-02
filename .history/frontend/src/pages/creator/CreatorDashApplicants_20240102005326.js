@@ -279,7 +279,7 @@ const CreatorDashApplicants = () => {
               }}
               getRowId={(row) => row._id}
               rows={data}
-              rowHeight={200}
+              rowHeight={50}
               columns={columns}
               pageSize={3}
               rowsPerPageOptions={[3]}
