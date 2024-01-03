@@ -25,7 +25,7 @@ export const jobLoadAction = (pageNumber, keyword = '', cat = '', location = '')
 export const jobLoadSingleAction = (id) => async (dispatch) => {
     dispatch({ type: JOB_LOAD_SINGLE_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/job/${id}`);
+        const { data } = await axios.get(`/api/job/${id}`);
         console.log(data);
         const {jobTypeName} = data.job.jobType;
         // console.log(data.job.jobType);

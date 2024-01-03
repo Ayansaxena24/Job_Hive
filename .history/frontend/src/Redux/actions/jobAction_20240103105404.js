@@ -7,7 +7,7 @@ const backend_api = process.env.REACT_APP_BACKEND_API;
 export const jobLoadAction = (pageNumber, keyword = '', cat = '', location = '') => async (dispatch) => {
     dispatch({ type: JOB_LOAD_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/jobs/show/?pageNumber=${pageNumber}&keyword=${keyword}&cat=${cat}&location=${location}`);
+        const { data } = await axios.get(`/api/jobs/show/?pageNumber=${pageNumber}&keyword=${keyword}&cat=${cat}&location=${location}`);
         // console.log(this.data);
         dispatch({ 
             type: JOB_LOAD_SUCCESS, 
@@ -25,7 +25,7 @@ export const jobLoadAction = (pageNumber, keyword = '', cat = '', location = '')
 export const jobLoadSingleAction = (id) => async (dispatch) => {
     dispatch({ type: JOB_LOAD_SINGLE_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/job/${id}`);
+        const { data } = await axios.get(`/api/job/${id}`);
         console.log(data);
         const {jobTypeName} = data.job.jobType;
         // console.log(data.job.jobType);

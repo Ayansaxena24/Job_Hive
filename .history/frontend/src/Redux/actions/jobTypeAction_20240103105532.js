@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 const backend_api = process.env.REACT_APP_BACKEND_API;
 
+
 export const jobTypeLoadAction = () => async (dispatch) => {
     dispatch({ type: JOB_TYPE_LOAD_REQUEST });
     try {
