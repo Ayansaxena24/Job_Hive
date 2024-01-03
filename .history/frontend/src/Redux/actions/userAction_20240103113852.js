@@ -35,7 +35,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
             role: user.role || 0, // Default to role 0 (user) if not specified
         };
 
-        const { data } = await axios.post(`${backend_api}/api/signup`, userData);
+        const { data } = await axios.post("/api/signup", userData);
 
         dispatch({
             type: USER_SIGNUP_SUCCESS,
@@ -55,7 +55,7 @@ export const userSignUpAction = (user) => async (dispatch) => {
 export const userLogOutAction = () => async (dispatch) => {
     dispatch({ type: USER_LOGOUT_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/logout`);
+        const { data } = await axios.get("/api/logout");
         localStorage.removeItem('userInfo');
         dispatch({ 
             type: USER_LOGOUT_SUCCESS, 
@@ -76,7 +76,7 @@ export const userLogOutAction = () => async (dispatch) => {
 export const userProfileAction = () => async (dispatch) => {
     dispatch({ type: USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/me`);
+        const { data } = await axios.get("/api/me");
         dispatch({ 
             type: USER_LOAD_SUCCESS, 
             payload: data 
@@ -93,7 +93,7 @@ export const userProfileAction = () => async (dispatch) => {
 export const creatorJobAction = (job) => async (dispatch) => {
     dispatch({ type : CREATOR_JOB_REQUEST });
     try{
-        const { data } = await axios.post(`${backend_api}/api/creator/jobcreatorhistory`, job);
+        const { data } = await axios.post("/api/creator/jobcreatorhistory", job);
 
         dispatch({
             type : CREATOR_JOB_SUCCESS,
@@ -116,7 +116,7 @@ export const userApplyJobAction = (job) => async (dispatch) => {
     dispatch({ type : USER_APPLY_JOB_REQUEST });
     console.log("job -> ",job);
     try{
-        const { data } = await axios.post(`${backend_api}/api/user/jobhistory`, job);
+        const { data } = await axios.post("/api/user/jobhistory", job);
         console.log(data);
         dispatch({
             type : USER_APPLY_JOB_SUCCESS,
@@ -138,7 +138,7 @@ export const userApplyJobAction = (job) => async (dispatch) => {
 export const allUserAction = () => async (dispatch) => {
     dispatch({ type: ALL_USER_LOAD_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/allusers`);
+        const { data } = await axios.get("/api/allusers");
         dispatch({ 
             type: ALL_USER_LOAD_SUCCESS, 
             payload: data 
@@ -157,7 +157,7 @@ export const userDeleteAction = (_id) => async (dispatch) => {
   
     try {
       // Use Axios to send a DELETE request to the specified URL
-      await axios.delete(`${backend_api}/api/admin/user/delete/${_id}`);
+      await axios.delete(`/api/admin/user/delete/${_id}`);
       
       // Dispatch the success action with the user ID
       dispatch({ type: USER_DELETE_SUCCESS, payload:_id });
@@ -173,7 +173,7 @@ export const userDeleteAction = (_id) => async (dispatch) => {
 export const createUserSignUpAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNUP_REQUEST });
     try {
-        const { data } = await axios.post(`${backend_api}/api/signup`, user);
+        const { data } = await axios.post("/api/signup", user);
 
         dispatch({
             type: USER_SIGNUP_SUCCESS,
@@ -193,7 +193,7 @@ export const createUserSignUpAction = (user) => async (dispatch) => {
 export const getApplicantAction = () => async (dispatch) => {
     dispatch({ type: GET_APPLICANT_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/creator/getApplicantInfo`);
+        const { data } = await axios.get(`/api/creator/getApplicantInfo`);
         console.log(data);
         dispatch({ 
             type: GET_APPLICANT_SUCCESS, 

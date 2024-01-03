@@ -193,7 +193,7 @@ export const createUserSignUpAction = (user) => async (dispatch) => {
 export const getApplicantAction = () => async (dispatch) => {
     dispatch({ type: GET_APPLICANT_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/creator/getApplicantInfo`);
+        const { data } = await axios.get(`/api/creator/getApplicantInfo`);
         console.log(data);
         dispatch({ 
             type: GET_APPLICANT_SUCCESS, 

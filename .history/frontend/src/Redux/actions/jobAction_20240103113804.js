@@ -67,7 +67,7 @@ export const registerAjobAction = (job) => async (dispatch) => {
     dispatch({ type: REGISTER_JOB_REQUEST })
 
     try {
-        const { data } = await axios.post(`${backend_api}/api/job/create`, job)
+        const { data } = await axios.post(`${backend_api}/api/job/create", job)
         dispatch({
             type: REGISTER_JOB_SUCCESS,
             payload: data

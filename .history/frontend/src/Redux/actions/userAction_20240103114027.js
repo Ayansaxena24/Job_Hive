@@ -173,7 +173,7 @@ export const userDeleteAction = (_id) => async (dispatch) => {
 export const createUserSignUpAction = (user) => async (dispatch) => {
     dispatch({ type: USER_SIGNUP_REQUEST });
     try {
-        const { data } = await axios.post(`${backend_api}/api/signup`, user);
+        const { data } = await axios.post(`/api/signup`, user);
 
         dispatch({
             type: USER_SIGNUP_SUCCESS,
@@ -193,7 +193,7 @@ export const createUserSignUpAction = (user) => async (dispatch) => {
 export const getApplicantAction = () => async (dispatch) => {
     dispatch({ type: GET_APPLICANT_REQUEST });
     try {
-        const { data } = await axios.get(`${backend_api}/api/creator/getApplicantInfo`);
+        const { data } = await axios.get(`/api/creator/getApplicantInfo`);
         console.log(data);
         dispatch({ 
             type: GET_APPLICANT_SUCCESS, 
